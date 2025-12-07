@@ -24,14 +24,14 @@ export default function TransferChart({ events }: TransferChartProps) {
 
   return (
     <motion.div
-      className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-8 shadow-2xl hover:shadow-cyan-500/30 transition-all duration-300"
+      className="bg-gradient-to-br from-slate-800/60 via-slate-800/40 to-slate-900/60 backdrop-blur-xl rounded-2xl border border-slate-700/60 p-10 shadow-2xl hover:shadow-cyan-500/50 hover:border-cyan-500/50 transition-all duration-300 group"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400 mb-2">📊 Transfer Analytics</h2>
-        <p className="text-slate-400 text-sm">Last {totalEvents} transfers • Total: <span className="text-cyan-400 font-semibold">{totalVolume.toLocaleString()} QUBIC</span></p>
+      <div className="mb-10">
+        <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400 mb-3 group-hover:text-cyan-300">📊 Transfer Analytics</h2>
+        <p className="text-slate-400 text-sm font-medium">Last {totalEvents} transfers • Total: <span className="text-cyan-400 font-semibold text-lg">{totalVolume.toLocaleString()} QUBIC</span></p>
       </div>
 
       {chartData.length > 0 ? (

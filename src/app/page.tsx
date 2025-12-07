@@ -70,15 +70,15 @@ export default function Home() {
         animate="visible"
       >
         {/* Hero Header */}
-        <motion.div className="w-full px-4 sm:px-6 lg:px-8 pt-16 pb-8 text-center" variants={itemVariants}>
+        <motion.div className="w-full px-4 sm:px-6 lg:px-8 pt-20 pb-12 text-center" variants={itemVariants}>
           <motion.h1
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400"
-            whileHover={{ scale: 1.02 }}
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 drop-shadow-lg"
+            whileHover={{ scale: 1.03 }}
             transition={{ duration: 0.3 }}
           >
             🐋 Qubic Whale Guardian
           </motion.h1>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
             Enterprise-grade real-time monitoring of large QUBIC transfers
           </p>
           
@@ -95,10 +95,10 @@ export default function Home() {
 
         {/* Stats Cards */}
         <motion.div
-          className="w-full px-4 sm:px-6 lg:px-8 mb-12"
+          className="w-full px-4 sm:px-6 lg:px-8 mb-16"
           variants={containerVariants}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             <StatsCard
               title="Total Transfers"
               value={stats.totalTransfers}
@@ -124,7 +124,7 @@ export default function Home() {
         </motion.div>
 
         {/* Transfer Chart */}
-        <motion.div className="w-full px-4 sm:px-6 lg:px-8 mb-12" variants={itemVariants}>
+        <motion.div className="w-full px-4 sm:px-6 lg:px-8 mb-16" variants={itemVariants}>
           <div className="max-w-7xl mx-auto">
             <TransferChart events={events} />
           </div>
@@ -138,8 +138,8 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {/* Radar - Left */}
             <motion.div className="lg:col-span-1" variants={itemVariants}>
-              <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-6 shadow-2xl hover:shadow-cyan-500/30 transition-shadow duration-300">
-                <h2 className="text-xl font-bold text-cyan-400 mb-4">Activity Radar</h2>
+              <div className="h-full bg-gradient-to-br from-slate-800/60 via-slate-800/40 to-slate-900/60 backdrop-blur-xl rounded-2xl border border-slate-700/60 p-8 shadow-2xl hover:shadow-cyan-500/50 hover:border-cyan-500/50 transition-all duration-300 group">
+                <h2 className="text-xl font-bold text-cyan-400 mb-6 group-hover:text-cyan-300 transition-colors">Activity Radar</h2>
                 <div className="flex justify-center">
                   <Radar />
                 </div>
@@ -148,16 +148,16 @@ export default function Home() {
 
             {/* Incident Feed - Center */}
             <motion.div className="lg:col-span-1" variants={itemVariants}>
-              <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-6 shadow-2xl hover:shadow-purple-500/30 transition-shadow duration-300 h-full">
-                <h2 className="text-xl font-bold text-purple-400 mb-4">Live Transfers</h2>
+              <div className="h-full bg-gradient-to-br from-slate-800/60 via-slate-800/40 to-slate-900/60 backdrop-blur-xl rounded-2xl border border-slate-700/60 p-8 shadow-2xl hover:shadow-purple-500/50 hover:border-purple-500/50 transition-all duration-300 group">
+                <h2 className="text-xl font-bold text-purple-400 mb-6 group-hover:text-purple-300 transition-colors">Live Transfers</h2>
                 <IncidentFeed />
               </div>
             </motion.div>
 
             {/* Leaderboard - Right */}
             <motion.div className="lg:col-span-1" variants={itemVariants}>
-              <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-6 shadow-2xl hover:shadow-pink-500/30 transition-shadow duration-300 h-full">
-                <h2 className="text-xl font-bold text-pink-400 mb-4">Top Whales</h2>
+              <div className="h-full bg-gradient-to-br from-slate-800/60 via-slate-800/40 to-slate-900/60 backdrop-blur-xl rounded-2xl border border-slate-700/60 p-8 shadow-2xl hover:shadow-pink-500/50 hover:border-pink-500/50 transition-all duration-300 group">
+                <h2 className="text-xl font-bold text-pink-400 mb-6 group-hover:text-pink-300 transition-colors">Top Whales</h2>
                 <Leaderboard />
               </div>
             </motion.div>
@@ -165,16 +165,16 @@ export default function Home() {
         </motion.div>
 
         {/* Wallet Explorer */}
-        <motion.div className="w-full px-4 sm:px-6 lg:px-8 mb-12" variants={itemVariants}>
-          <div className="max-w-7xl mx-auto bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-8 shadow-2xl hover:shadow-blue-500/30 transition-shadow duration-300">
-            <h2 className="text-2xl font-bold text-blue-400 mb-6">Wallet Explorer</h2>
+        <motion.div className="w-full px-4 sm:px-6 lg:px-8 mb-16" variants={itemVariants}>
+          <div className="max-w-7xl mx-auto bg-gradient-to-br from-slate-800/60 via-slate-800/40 to-slate-900/60 backdrop-blur-xl rounded-2xl border border-slate-700/60 p-10 shadow-2xl hover:shadow-blue-500/50 hover:border-blue-500/50 transition-all duration-300 group">
+            <h2 className="text-2xl font-bold text-blue-400 mb-8 group-hover:text-blue-300 transition-colors">Wallet Explorer</h2>
             <WalletExplorer />
           </div>
         </motion.div>
 
         {/* Footer */}
-        <motion.div className="w-full px-4 sm:px-6 lg:px-8 py-8 border-t border-slate-700/50 text-center text-slate-400" variants={itemVariants}>
-          <p className="text-sm">Powered by EasyConnect • Real-time Data • Enterprise Analytics</p>
+        <motion.div className="w-full px-4 sm:px-6 lg:px-8 py-12 border-t border-slate-700/50 text-center text-slate-400" variants={itemVariants}>
+          <p className="text-sm font-medium">Powered by EasyConnect • Real-time Data • Enterprise Analytics</p>
         </motion.div>
       </motion.div>
     </div>
