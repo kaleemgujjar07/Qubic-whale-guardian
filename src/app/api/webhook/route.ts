@@ -39,13 +39,13 @@ export async function POST(req: Request) {
     }
 
     // Basic validation / normalization
-    const event = {
+    const event: any = {
       id: Date.now(),
       type: data?.type ?? "Unknown",
       wallet: data?.wallet ?? "N/A",
       amount: typeof data?.amount === "string" ? Number(data.amount) : (data?.amount ?? 0),
       timestamp: new Date().toISOString(),
-    } as const;
+    };
 
     if (Number.isNaN(event.amount)) {
       console.warn("/api/webhook: amount is not a number", data?.amount);
@@ -53,7 +53,12 @@ export async function POST(req: Request) {
     }
 
     // Store the incoming event in memory (your simple in-memory store)
-    addEvent(event);
+    try {
+      addEvent(event);
+    } catch (addErr) {
+      console.error("/api/webhook: error storing event", addErr);
+      return NextResponse.json({ message: "Failed to store event" }, { status: 500, headers: CORS_HEADERS });
+    }
 
     return NextResponse.json({ message: "OK" }, { status: 200, headers: CORS_HEADERS });
   } catch (err) {
