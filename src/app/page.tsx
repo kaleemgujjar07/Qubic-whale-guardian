@@ -23,11 +23,11 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: (i?: number) => ({
+  visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay: (i || 0) * 0.1 },
-  }),
+    transition: { duration: 0.8 },
+  },
 };
 
 export default function Home() {
