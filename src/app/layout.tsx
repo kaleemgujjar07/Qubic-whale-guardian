@@ -13,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark scroll-smooth">
-      <body className="bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950 text-slate-100 antialiased">
+      {/* suppressHydrationWarning prevents React from warning when extensions
+          (e.g. Grammarly) inject attributes into the DOM before hydration. */}
+      <body suppressHydrationWarning className="bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950 text-slate-100 antialiased">
         {children}
       </body>
     </html>
