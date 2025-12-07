@@ -63,6 +63,7 @@ export default function Home() {
       </div>
 
       {/* Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         className="relative z-10 w-full"
         variants={containerVariants}
@@ -177,6 +178,7 @@ export default function Home() {
           <p className="text-sm font-medium">Powered by EasyConnect • Real-time Data • Enterprise Analytics</p>
         </motion.div>
       </motion.div>
+      </div>
     </div>
   );
 }

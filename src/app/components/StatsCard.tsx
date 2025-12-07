@@ -11,55 +11,64 @@ interface StatsCardProps {
 }
 
 export default function StatsCard({ title, value, icon, color, variants }: StatsCardProps) {
+  const colorMap: Record<string, { from: string; to: string; accent: string }> = {
+    blue: { from: "#0ea5e9", to: "#06b6d4", accent: "#06b6d4" },
+    purple: { from: "#a78bfa", to: "#f472b6", accent: "#a78bfa" },
+    green: { from: "#34d399", to: "#10b981", accent: "#34d399" },
+  };
+
+  // derive gradient keys from passed `color` (supports values like "from-blue-500 to-cyan-400" or short names)
+  const key = color?.split("-")[0] || "blue";
+  const grad = colorMap[key] || colorMap.blue;
+
   return (
     <motion.div
-      className={`relative group overflow-hidden rounded-2xl bg-gradient-to-br ${color} p-[2px]`}
-      whileHover={{ scale: 1.05, boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.5)" }}
+      className={`relative group overflow-hidden rounded-2xl p-[2px] mx-auto`}
+      whileHover={{ scale: 1.03 }}
       variants={variants}
     >
-      {/* Inner card with dark background */}
-      <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl p-8 backdrop-blur-xl">
-        {/* Background animated gradient */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl bg-gradient-to-br from-white/5 to-white/0"></div>
+      {/* Outer gradient border */}
+      <div
+        className="relative rounded-2xl"
+        style={{ background: `linear-gradient(135deg, ${grad.from}20, ${grad.to}10)` }}
+      >
+        {/* Inner card with subtle dark background */}
+        <div className="relative bg-slate-900/60 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+          <div className="relative z-10 flex items-center justify-between gap-4 mb-4">
+            <div className="flex-1">
+              <p className="text-slate-300 text-sm font-semibold uppercase tracking-wider mb-1">{title}</p>
+              <motion.h3
+                className="text-3xl md:text-4xl font-extrabold text-white tracking-tight"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.05 }}
+              >
+                {value}
+              </motion.h3>
+            </div>
 
-        <div className="relative z-10 flex items-start justify-between mb-6">
-          <div>
-            <p className="text-slate-400 text-sm font-medium uppercase tracking-wide mb-2">{title}</p>
-            <motion.h3
-              className="text-4xl md:text-5xl font-black text-white tracking-tighter"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+            <motion.div
+              className="flex-shrink-0 text-4xl md:text-5xl opacity-95"
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 3, repeat: Infinity }}
             >
-              {value}
-            </motion.h3>
+              {icon}
+            </motion.div>
           </div>
-          <motion.span
-            className="text-5xl opacity-90 group-hover:scale-110 transition-transform"
-            animate={{ y: [0, -5, 0] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          >
-            {icon}
-          </motion.span>
+
+          {/* Animated bottom accent */}
+          <motion.div
+            className="h-1.5 rounded-full mt-3"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.9, delay: 0.15 }}
+            style={{
+              transformOrigin: "left",
+              background: `linear-gradient(90deg, ${grad.from}, ${grad.to})`,
+            }}
+          />
         </div>
-
-        {/* Animated bottom border */}
-        <motion.div
-          className={`h-1.5 bg-gradient-to-r ${color} rounded-full`}
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          style={{ transformOrigin: "left" }}
-        />
       </div>
-
-      {/* Glow effect on hover */}
-      <motion.div
-        className={`absolute inset-0 opacity-0 group-hover:opacity-30 rounded-2xl transition-opacity duration-300 blur-xl`}
-        style={{
-          background: `linear-gradient(135deg, var(--tw-gradient-stops))`,
-        }}
-      />
     </motion.div>
   );
 }
