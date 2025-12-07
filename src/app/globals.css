@@ -1,7 +1,5 @@
 /* src/app/globals.css - global styles for Qubic Whale Guardian */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
 
 /* Reset */
 * {
